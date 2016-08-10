@@ -20,17 +20,16 @@ using namespace std;
 后128个位特殊字符是键盘上找不到的字符。
  
  */
-#define CHAR_SIZE 256
 
 int main(int argc, const char * argv[])
 {
-    int hashTable[CHAR_SIZE];
-    for (int i = 0; i < CHAR_SIZE; i++)
-    {
-        hashTable[i] = 0;
-    }
+    int hashTable[256];
+
+    // 从hashTable指针开始处的sizeof(int) * 256大小的内存初始化为0；
+    memset(hashTable, 0, sizeof(int) * 256);
 
     string myString = "abcdab";
+    // 以该字母的ASCII码值作为数组下标，
     for (int i = 0 ; i < myString.length(); i++)
     {
         hashTable[myString[i]]++;
